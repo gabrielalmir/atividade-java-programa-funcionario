@@ -12,12 +12,12 @@ public class GerenciarFuncionario {
 
         do {
             System.out.println("========= MENU ==========");
-            System.out.println("1 - Cadastrar Funcionario");
-            System.out.println("2 - Consultar Funcionario");
-            System.out.println("3 - Bonificar Único Funcionário");
-            System.out.println("4 - Bonificar Todos Funcionários");
-            System.out.println("5 - Ativar/Desativar Funcionário");
-            System.out.println("9 - Sair");
+            System.out.println("[1] - Cadastrar Funcionario");
+            System.out.println("[2] - Consultar Funcionario");
+            System.out.println("[3] - Bonificar Único Funcionário");
+            System.out.println("[4] - Bonificar Todos Funcionários");
+            System.out.println("[5] - Ativar/Desativar Funcionário");
+            System.out.println("[9] - Sair");
             System.out.println("==========================");
             System.out.print("Escolha sua opção: ");
 
@@ -167,9 +167,9 @@ public class GerenciarFuncionario {
 
         do {
             System.out.println("=== Consultar Funcionario === ");
-            System.out.println("1 - Listar Todos Funcionários ");
-            System.out.println("2 - Consultar um Funcionário  ");
-            System.out.println("3 - Voltar ao menu            ");
+            System.out.println("[1] - Listar Todos Funcionários ");
+            System.out.println("[2] - Consultar um Funcionário  ");
+            System.out.println("[3] - Voltar ao menu            ");
             System.out.print("Escolha sua opção: ");
 
             opcao = Integer.parseInt(sc.nextLine());
