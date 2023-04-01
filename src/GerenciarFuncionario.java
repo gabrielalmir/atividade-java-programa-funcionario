@@ -87,19 +87,18 @@ public class GerenciarFuncionario {
         }
 
         boolean estaAtivo = funcionario.isEstaAtivo();
-        String estadoAtual = estaAtivo ? "Ativo" : "Inativo";
-        System.out.println("Estado atual do funcionário: " + estadoAtual);
+        System.out.println("Estado atual do funcionário: " + funcionario.estadoDeAtividade());
 
-        String novoEstado = estaAtivo ? "Inativo" : "Ativo";
-        System.out.println("Deseja alterar o estado do funcionário para " + novoEstado + "? (S/N)");
+        System.out.println("Deseja alterar o estado do funcionário para " + funcionario.estadoDeAtividade(!estaAtivo) + "? (S/N)");
         String opcao = sc.nextLine();
 
         if (opcao.equalsIgnoreCase("S")) {
             funcionario.setEstaAtivo(!estaAtivo);
-            System.out.println("Estado do funcionário alterado com sucesso para " + novoEstado);
-        } else {
-            System.out.println("Estado do funcionário permanece como " + estadoAtual);
+            System.out.println("Estado do funcionário alterado com sucesso para " + funcionario.estadoDeAtividade());
+            return;
         }
+
+        System.out.println("Estado do funcionário permanece como " + funcionario.estadoDeAtividade(estaAtivo));
     }
 
     public void execConsultarUnico() {

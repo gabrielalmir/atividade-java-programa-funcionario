@@ -62,15 +62,22 @@ public class Funcionario {
         setSalario(getSalario() + salario);
     }
 
+    public String estadoDeAtividade() {
+        return estadoDeAtividade(isEstaAtivo());
+    }
+
+    public String estadoDeAtividade(boolean estaAtivo) {
+        return estaAtivo ? "Ativo" : "Inativo";
+    }
+
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "salario=" + salario +
-                ", registro=" + registro +
-                ", estaAtivo=" + estaAtivo +
-                ", nome='" + nome + '\'' +
-                ", departamento='" + departamento + '\'' +
-                ", rg='" + rg + '\'' +
-                '}';
+        return "Dados do funcionário:\n" +
+                "Nome: " + getNome() + "\n" +
+                "Registro: " + getRegistro() + "\n" +
+                "Departamento: " + getDepartamento() + "\n" +
+                "RG: " + getRg() + "\n" +
+                "Salário: " + getSalario() + "\n" +
+                "Estado: " + estadoDeAtividade();
     }
 }
