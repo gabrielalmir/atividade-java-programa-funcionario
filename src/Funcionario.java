@@ -6,13 +6,8 @@ public class Funcionario {
     private String departamento;
     private String rg;
 
-    Funcionario(long registro, String departamento, String nome, String rg, double salario, boolean estaAtivo) {
-        this.registro = registro;
-        this.departamento = departamento;
-        this.nome = nome;
-        this.rg = rg;
-        this.salario = salario;
-        this.estaAtivo = estaAtivo;
+    public Funcionario() {
+        this.estaAtivo = true;
     }
 
     public double getSalario() {

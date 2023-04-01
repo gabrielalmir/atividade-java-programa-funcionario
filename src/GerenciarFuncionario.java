@@ -24,29 +24,25 @@ public class GerenciarFuncionario {
             opcao = Integer.parseInt(gerenciarFuncionario.sc.nextLine());
 
             switch (opcao) {
-                case 1:
-                    gerenciarFuncionario.execCadastrar();
-                    break;
-                case 2:
-                    gerenciarFuncionario.execConsultar();
-                    break;
-                case 3:
-                    gerenciarFuncionario.execBonificarUnico();
-                    break;
-                case 4:
-                    gerenciarFuncionario.execBonificar();
-                    break;
-                case 5:
-                    gerenciarFuncionario.execAtivarDesativar();
-                    break;
-                case 9:
-                    System.out.println("Volte sempre!");
-                    break;
-                default:
-                    System.out.println("Opção inválida, digite novamente.");
-                    break;
+                case 1 -> gerenciarFuncionario.execCadastrar();
+                case 2 -> gerenciarFuncionario.execConsultar();
+                case 3 -> gerenciarFuncionario.execBonificarUnico();
+                case 4 -> gerenciarFuncionario.execBonificar();
+                case 5 -> gerenciarFuncionario.execAtivarDesativar();
+                case 9 -> gerenciarFuncionario.execSair();
+                default -> System.out.println("Opção inválida, digite novamente.");
             }
+
+            System.out.println();
+            System.out.println("Pressione ENTER para continuar...");
+            gerenciarFuncionario.sc.nextLine();
         } while (opcao != 9);
+    }
+
+
+    public void execSair() {
+        System.out.println("Volte sempre!");
+        System.exit(0);
     }
 
     public void execCadastrar() {
@@ -65,15 +61,13 @@ public class GerenciarFuncionario {
         System.out.println("Digite o salário: ");
         double salario = Double.parseDouble(sc.nextLine());
 
-        Funcionario funcionario = new Funcionario(registro, departamento, nome, rg, salario, true);
+        Funcionario funcionario = new Funcionario();
 
-// ou tbm:
-//        funcionario.setRegistro(registro);
-//        funcionario.setDepartamento(departamento);
-//        funcionario.setNome(nome);
-//        funcionario.setRg(rg);
-//        funcionario.setSalario(salario);
-//        funcionario.setEstaAtivo(true);
+        funcionario.setRegistro(registro);
+        funcionario.setDepartamento(departamento);
+        funcionario.setNome(nome);
+        funcionario.setRg(rg);
+        funcionario.setSalario(salario);
 
         funcionarios.add(funcionario);
 
@@ -92,15 +86,19 @@ public class GerenciarFuncionario {
             return;
         }
 
-        System.out.println("Estado do funcionário: " + funcionario.isEstaAtivo());
+        boolean estaAtivo = funcionario.isEstaAtivo();
+        String estadoAtual = estaAtivo ? "Ativo" : "Inativo";
+        System.out.println("Estado atual do funcionário: " + estadoAtual);
 
-        System.out.println("Deseja alterar o estado do funcionario (S/n): ");
+        String novoEstado = estaAtivo ? "Inativo" : "Ativo";
+        System.out.println("Deseja alterar o estado do funcionário para " + novoEstado + "? (S/N)");
         String opcao = sc.nextLine();
 
-        if (opcao.toLowerCase().equals("s")) {
-            funcionario.setEstaAtivo(!funcionario.isEstaAtivo());
-            System.out.println("Estado do funcionário foi alterado com sucesso.");
-            System.out.println(funcionario);
+        if (opcao.equalsIgnoreCase("S")) {
+            funcionario.setEstaAtivo(!estaAtivo);
+            System.out.println("Estado do funcionário alterado com sucesso para " + novoEstado);
+        } else {
+            System.out.println("Estado do funcionário permanece como " + estadoAtual);
         }
     }
 
@@ -178,20 +176,14 @@ public class GerenciarFuncionario {
             opcao = Integer.parseInt(sc.nextLine());
 
             switch (opcao) {
-                case 1:
+                case 1 -> {
                     for (Funcionario funcionario : funcionarios) {
                         System.out.println(funcionario);
                     }
-                    break;
-                case 2:
-                    execConsultarUnico();
-                    break;
-                case 3:
-                    System.out.println("Voltando ao menu ...");
-                    break;
-                default:
-                    System.out.println("Opção inválida. Digite novamente");
-                    break;
+                }
+                case 2 -> execConsultarUnico();
+                case 3 -> System.out.println("Voltando ao menu ...");
+                default -> System.out.println("Opção inválida. Digite novamente");
             }
         } while (opcao != 3);
     }
